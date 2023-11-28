@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import lombok.Data;
 
 /**
@@ -28,6 +29,8 @@ public class CropModel {
   @ManyToOne
   @JoinColumn(name = "farm_id")
   private FarmModel farmModel;
+
+  private LocalDate createdAt;
 
   public CropModel() {
   }
