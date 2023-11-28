@@ -35,9 +35,10 @@ public class CropController {
     List<CropDtos> cropsDto = crops.stream()
         .map(crop -> 
             new CropDtos(
-                crop.getId(), crop.getName(), crop.getFarmModel().getId(), 
-                  crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()))
-                  .toList();
+                crop.getId(), crop.getName(), crop.getPlantedArea(),
+                  crop.getPlantedDate(), crop.getHarvestDate(),
+                    crop.getFarmModel().getId()))
+                    .toList();
     return ResponseEntity.status(HttpStatus.OK).body(cropsDto);
   }
 
@@ -50,9 +51,10 @@ public class CropController {
     List<CropDtos> cropDto = crops.stream()
         .map(crop -> 
             new CropDtos(
-                crop.getId(), crop.getName(), crop.getFarmModel().getId(), 
-                  crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()))
-                  .toList();
+                crop.getId(), crop.getName(),crop.getPlantedArea(),
+                  crop.getPlantedDate(), crop.getHarvestDate(),
+                    crop.getFarmModel().getId()))
+                    .toList();
 
     return ResponseEntity.status(HttpStatus.OK).body(cropDto);
   }

@@ -12,6 +12,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 /**
@@ -19,6 +22,7 @@ import lombok.Data;
  */
 @Data
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Table(name = "crops")
 public class CropModel {
   @Id
@@ -53,14 +57,12 @@ public class CropModel {
   /**
    * Constructor com coisas.
    */
-  public CropModel(Long id, String name, Double plantedArea, FarmModel farmModel,
-      LocalDate plantedDate, LocalDate harvestDate, List<Fertilizer> fertilizer) {
+  public CropModel(Long id, String name, Double plantedArea,
+      LocalDate plantedDate, LocalDate harvestDate) {
     this.id = id;
     this.name = name;
     this.plantedArea = plantedArea;
-    this.farmModel = farmModel;
     this.plantedDate = plantedDate;
     this.harvestDate = harvestDate;
-    this.fertilizer = fertilizer;
   }
 }

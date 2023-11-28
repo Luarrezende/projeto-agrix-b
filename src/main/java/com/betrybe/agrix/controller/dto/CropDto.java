@@ -7,10 +7,10 @@ import java.time.LocalDate;
  * DTO Crop.
  */
 public record CropDto(
-        Long id, String name, Double plantedArea, Long farmId,
-        LocalDate plantedDate, LocalDate harvestDate) {
+        Long id, String name, Double plantedArea, LocalDate plantedDate,
+        LocalDate harvestDate, Long farmId) {
   public CropModel toCrop() {
-    return new CropModel(id, name, plantedArea, null, plantedDate, harvestDate, null);
+    return new CropModel(id, name, plantedArea, plantedDate, harvestDate);
   }
 
   /**
@@ -19,7 +19,7 @@ public record CropDto(
   public static CropDto fromCropModel(CropModel cropModel, Long farmId) {
     return new CropDto(
             cropModel.getId(), cropModel.getName(), cropModel.getPlantedArea(),
-            farmId, cropModel.getPlantedDate(), cropModel.getHarvestDate()
+            cropModel.getPlantedDate(), cropModel.getHarvestDate(), farmId
     );
   }
 }
