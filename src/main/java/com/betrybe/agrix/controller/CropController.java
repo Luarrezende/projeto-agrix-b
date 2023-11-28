@@ -51,7 +51,7 @@ public class CropController {
     List<CropDtos> cropDto = crops.stream()
         .map(crop -> 
             new CropDtos(
-                crop.getId(), crop.getName(),crop.getPlantedArea(),
+                crop.getId(), crop.getName(), crop.getPlantedArea(),
                   crop.getPlantedDate(), crop.getHarvestDate(),
                     crop.getFarmModel().getId()))
                     .toList();
