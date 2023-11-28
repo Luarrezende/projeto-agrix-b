@@ -1,5 +1,6 @@
 package com.betrybe.agrix.controller;
 
+import com.betrybe.agrix.controller.dto.CropDto;
 import com.betrybe.agrix.controller.dto.CropDtos;
 import com.betrybe.agrix.model.entities.CropModel;
 import com.betrybe.agrix.service.CropService;
@@ -46,16 +47,9 @@ public class CropController {
   * Get id crops.
   */
   @GetMapping("/{id}")
-  public ResponseEntity<List<CropDtos>> getById(@PathVariable Long id) {
-    List<CropModel> crops = cropService.getAll();
-    List<CropDtos> cropDto = crops.stream()
-        .map(crop -> 
-            new CropDtos(
-                crop.getId(), crop.getName(), crop.getPlantedArea(),
-                  crop.getPlantedDate(), crop.getHarvestDate(),
-                    crop.getFarmModel().getId()))
-                    .toList();
+  public ResponseEntity<CropDto> getById(@PathVariable Long id) {
+    CropModel crops = cropService.getById(id);
 
-    return ResponseEntity.status(HttpStatus.OK).body(cropDto);
+    return ResponseEntity.status(HttpStatus.OK).body(CropDto.fromCropModel(crops, id));
   }
 }
