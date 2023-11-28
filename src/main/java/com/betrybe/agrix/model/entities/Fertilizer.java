@@ -5,39 +5,43 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import lombok.Data;
 
 /**
- * Model representing a farm.
+ * Entity fertilizer.
  */
 @Data
 @Entity
-@Table(name = "farms")
-public class FarmModel {
+@Table(name = "fertilizer")
+public class Fertilizer {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-
   private String name;
-  private Double size;
+  private String brand;
+  private String composition;
 
-  @OneToMany(mappedBy = "farmModel")
+  @ManyToMany(mappedBy = "fertilizer")
   @JsonIgnore
-  private List<CropModel> crops;
+  private List<CropModel> cropModel;
 
-  public FarmModel() {
+  public Fertilizer() {
   }
 
   /**
-   * contructor com coisas.
+   * Constructor.
    */
-  public FarmModel(Long id, String name, Double size, List<CropModel> crops) {
+  public Fertilizer(Long id, String name, String brand,
+      String composition, List<CropModel> cropModel) {
     this.id = id;
     this.name = name;
-    this.size = size;
-    this.crops = crops;
+    this.brand = brand;
+    this.composition = composition;
+    this.cropModel = cropModel;
   }
+  
 }

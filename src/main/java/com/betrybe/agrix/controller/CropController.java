@@ -52,7 +52,9 @@ public class CropController {
         crop.getId(), 
         crop.getName(),
         crop.getPlantedArea(), 
-        crop.getFarmModel().getId()
+        crop.getFarmModel().getId(),
+        crop.getPlantedDate(),
+        crop.getHarvestDate()
     );
 
     return ResponseEntity.status(HttpStatus.OK).body(cropDto);

@@ -73,8 +73,8 @@ public class FarmController {
   public ResponseEntity<List<CropDto>> getFarmCrops(@PathVariable Long farmId) {
     List<CropModel> crops = farmService.getFarmCrops(farmId);
     List<CropDto> cropsDto = crops.stream()
-        .map(crop -> new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(), farmId))
-        .toList();
+        .map(crop -> new CropDto(crop.getId(), crop.getName(), crop.getPlantedArea(),
+            farmId, crop.getPlantedDate(), crop.getHarvestDate())).toList();
 
     return ResponseEntity.status(HttpStatus.OK).body(cropsDto);
   }

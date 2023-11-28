@@ -8,7 +8,7 @@ import com.betrybe.agrix.model.entities.FarmModel;
 public record FarmDto(Long id, String name, Double size) {
 
   public FarmModel toFarm() {
-    return new FarmModel(id, name, size);
+    return new FarmModel(id, name, size, null);
   }
   
 }
