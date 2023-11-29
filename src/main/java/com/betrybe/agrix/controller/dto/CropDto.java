@@ -19,7 +19,8 @@ public record CropDto(
   public static CropDto fromCropModel(CropModel cropModel, Long farmId) {
     return new CropDto(
             cropModel.getId(), cropModel.getName(), cropModel.getPlantedArea(),
-            cropModel.getPlantedDate(), cropModel.getHarvestDate(), farmId
+            cropModel.getPlantedDate(), cropModel.getHarvestDate(),
+            farmId
     );
   }
 }
