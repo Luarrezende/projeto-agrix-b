@@ -3,7 +3,6 @@ package com.betrybe.agrix.advice;
 import com.betrybe.agrix.exceptions.src.main.java.com.betrybe.agrix.exceptions.CropNotFoundException;
 import com.betrybe.agrix.exceptions.src.main.java.com.betrybe.agrix.exceptions.FarmNotFoundException;
 import com.betrybe.agrix.exceptions.src.main.java.com.betrybe.agrix.exceptions.FertilizerNotFoundException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
