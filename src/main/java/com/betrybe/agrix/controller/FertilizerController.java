@@ -3,8 +3,12 @@ package com.betrybe.agrix.controller;
 import com.betrybe.agrix.controller.dto.FertilizerDto;
 import com.betrybe.agrix.model.entities.Fertilizer;
 import com.betrybe.agrix.service.FertilizerService;
+
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +30,17 @@ public class FertilizerController {
   public ResponseEntity<Fertilizer> insertFertilizer(@RequestBody FertilizerDto fertilizerDto) {
     Fertilizer fertilizer = fertilizerService.create(fertilizerDto.toEntity());
     return ResponseEntity.status(HttpStatus.CREATED).body(fertilizer);
+  }
+
+  @GetMapping
+  public ResponseEntity<List<FertilizerDto>> getAllFertilizer() {
+    List<Fertilizer> fertilizers = fertilizerService.getAll();
+    List<FertilizerDto> fertilizerDto = fertilizers.stream()
+       .map(fertilizer -> 
+            new FertilizerDto(
+                fertilizer.getId(), fertilizer.getName(), fertilizer.getBrand(),
+                  fertilizer.getComposition()))
+                   .toList();
+    return ResponseEntity.status(HttpStatus.OK).body(fertilizerDto);
   }
 }
