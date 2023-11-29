@@ -54,4 +54,13 @@ public class CropService {
     cropModel.getFertilizer().add(fertilizer);
     cropRepository.save(cropModel);
   }
+
+  /**
+   * This method gets all fertilizers that belongs to a crop.
+   */
+  public List<Fertilizer> getFertilizersByCrop(Long cropId) {
+    CropModel cropModel = cropRepository.findById(cropId)
+         .orElseThrow(CropNotFoundException::new);
+    return cropModel.getFertilizer();
+  }
 }
